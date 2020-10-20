@@ -17,7 +17,7 @@ Additional software required on the HOST machine.
 
 Note that the things listed above are something that should/will be shared by the team and do not require each developer to sign up for the full service.
 
-* Active Expo Account
+* Active Expo Account (https://expo.io/settings/access-tokens)
 * Apple Developer Account
 
 Ask for the access credentials and access tokens from your team and use them in `.env` after project has been bootstrapped.
@@ -58,15 +58,35 @@ Notes on how to work with the app in development mode.
 
 ### Web Browser
 
-TBD
+```shell
+npx expo start --web
+```
+
+Wait the application to be built and open [http://localhost:19006](http://localhost:19006).
 
 ### Simultaor
 
-TBD 
+```shell
+npx expo start --tunnel
+```
+
+* Copy the `exp://...` URL to clipboard. 
+* Open the Simulator.
+* Open the Expo app within the simulator.
+* CMD+V the URL from clipboard to the simulator.
 
 ### Device
 
-TBD
+* Make sure you have [Expo](https://apps.apple.com/us/app/expo-client/id982107779) installed on your device.
+
+```shell
+npx expo start --tunnel
+```
+
+* use the camera of your device to capture the provided QR code 
+* open Expo through the presented notification that opens afterwards.
+
+Note that if you see a warning 'Tunnel URL not found (it might not be ready yet), falling back to LAN URL', then you have to run the expo command again.
 
 ## Build
 

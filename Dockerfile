@@ -22,6 +22,7 @@ RUN unzip ngrok-stable-linux-amd64.zip -d /usr/local/bin
 
 RUN echo 'export PATH=/usr/lib/android-sdk/cmdline-tools/tools/bin:${PATH}' >> /home/node/.bashrc \
     && echo 'export PATH=/home/node/.yarn/bin:${PATH}' >> /home/node/.bashrc \
+    && echo 'export PATH=/app/node_modules/.bin:${PATH}' >> /home/node/.bashrc \
     && echo 'export LANG=en_US.UTF-8' >> /home/node/.bashrc
 
 ARG app_home
