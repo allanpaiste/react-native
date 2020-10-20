@@ -1,0 +1,18 @@
+# Copyright © Allan Paiste. All rights reserved.
+# See LICENSE.txt for license details.
+version: "3.8"
+services:
+  app:
+    build:
+      target: base
+    volumes:
+      - ide-config:/${APP_HOME}/.vscode
+    ports:
+      - 9222:9222
+
+volumes:
+  ide-config:
+    driver_opts:
+      type: none
+      device: ${PWD}/.devcontainer/.vscode
+      o: bind

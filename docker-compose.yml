@@ -1,0 +1,28 @@
+# Copyright © Allan Paiste. All rights reserved.
+# See LICENSE.txt for license details.
+version: "3.8"
+services:
+  app:
+    container_name: "${COMPOSE_PROJECT_NAME}_app"
+    build:
+      context: .
+      target: ${TARGET}
+      args:
+        app_home: ${APP_HOME}
+        ngrok_token: ${NGROK_TOKEN}
+    expose:
+      - 19000
+      - 19002
+      - 19006
+      - 8081
+    ports:
+      - 19000:19000
+      - 19002:19002
+      - 19006:19006
+      - 8081:8081
+    environment:
+      REACT_APP_GOOGLE_CLIENT_ID: ${REACT_APP_GOOGLE_CLIENT_ID}
+      REACT_APP_INSTAGRAM_CLIENT_ID: ${REACT_APP_INSTAGRAM_CLIENT_ID}
+      REACT_APP_INTERCOM_APP_ID: ${REACT_APP_INTERCOM_APP_ID}
+      REACT_APP_GOOGLE_TAG_MANAGER_ID: ${REACT_APP_GOOGLE_TAG_MANAGER_ID}
+      REACT_APP_API_BASE_URL: ${REACT_APP_API_BASE_URL}

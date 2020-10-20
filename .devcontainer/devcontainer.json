@@ -1,0 +1,55 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.134.0/containers/javascript-node
+{
+  "name": "Node",
+  "dockerComposeFile": ["../docker-compose.yml", "../docker-compose.override.yml", "docker-compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/app",
+  "initializeCommand": "${localWorkspaceFolder}/.devcontainer/.vscode/.scripts/sync-stop.sh ${localWorkspaceFolder}",
+  "postAttachCommand": "${containerWorkspaceFolder}/.vscode/.scripts/sync-start.sh ${localWorkspaceFolder}",
+  "settings": {
+    "files.autoSave": "onFocusChange",
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "mochaExplorer.mochaPath": "node_modules/mocha",
+    "mochaExplorer.ui": "bdd",
+    "editor.renderWhitespace": "all",
+    "eslint.codeActionsOnSave.mode": "all",
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "todo-tree.filtering.excludeGlobs": ["/node_modules/**/*", "/build/**/*"],
+    "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
+    "todo-tree.general.tags": [
+      "BUG",
+      "HACK",
+      "FIXME",
+      "TODO",
+      "XXX",
+      "@todo",
+      "@TODO",
+      "@fix",
+      "@fixme",
+      "@FIXME",
+      "@FIX",
+      "@bug"
+    ],
+    "workbench.tree.indent": 20,
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "search.useIgnoreFiles": false,
+    "jestTestExplorer.flattenExplorer": true,
+    "jestTestExplorer.pathToJest": "${containerWorkspaceFolder}/node_modules/.bin/jest",
+    "jestTestExplorer.debugOutput": "integratedTerminal",
+    "jestTestExplorer.logpanel": true
+  },
+  "extensions": [
+    "gamunu.vscode-yarn",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "hbenl.vscode-test-explorer",
+    "kavod-io.vscode-jest-test-adapter",
+    "gruntfuggly.todo-tree",
+    "timonwong.shellcheck",
+    "esbenp.prettier-vscode"
+  ]
+}

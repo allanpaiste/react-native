@@ -1,0 +1,28 @@
+# Copyright © Allan Paiste. All rights reserved.
+# See LICENSE.txt for license details.
+sync:
+  defaults:
+    ignore:
+      vcs: true
+  project:
+    alpha: "."
+    beta: "docker://${COMPOSE_PROJECT_NAME}_app${APP_HOME}"
+    mode: two-way-resolved
+    ignore:
+      paths:
+        - "/ios/Pods"
+        - "/node_modules"
+        - "/build"
+        - "/.devcontainer/.vscode"
+        - "/.vscode"
+        - "/.idea"
+
+  modules:
+    alpha: "docker://${COMPOSE_PROJECT_NAME}_app${APP_HOME}/node_modules"
+    beta: "./node_modules"
+    mode: one-way-replica
+
+  ide:
+    alpha: "./.devcontainer/.vscode"
+    beta: "docker://${COMPOSE_PROJECT_NAME}_app${APP_HOME}/.vscode"
+    mode: two-way-resolved

@@ -1,0 +1,14 @@
+# Copyright © Allan Paiste. All rights reserved.
+# See LICENSE.txt for license details.
+version: "3.8"
+services:
+  app:
+    volumes:
+      - app-root:${APP_HOME}
+    entrypoint: tail -f /dev/null
+    environment:
+      NODE_ENV: development
+      CPUID: ${COMPOSE_PROJECT_NAME}
+
+volumes:
+  app-root:
