@@ -1,6 +1,9 @@
 {
   "name": "experiment-react-native",
   "version": "0.1.0",
+  "license": "MIT",
+  "description": "Base project for creating working with React Native within a dockerized environment",
+  "author": "Allan Paiste",
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
