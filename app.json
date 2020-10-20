@@ -19,7 +19,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.atlasalpine.reactnative.experiment"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"

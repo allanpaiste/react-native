@@ -22,3 +22,5 @@ mutagen.log
 .mutagen-sync
 com.mutagen.project-daemon.plist
 .port
+tmp
+expo.log

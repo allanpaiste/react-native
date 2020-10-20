@@ -39,7 +39,6 @@ COPY --chown=node:node ./package.json ./yarn.lock ./
 RUN echo "//registry.npmjs.org/:_authToken=${npm_token}" > .npmrc
 
 USER node
-RUN yarn --cwd /home/node global add expo-cli
 
 FROM base as builder
 RUN yarn

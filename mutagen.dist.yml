@@ -10,17 +10,11 @@ sync:
     mode: two-way-resolved
     ignore:
       paths:
-        - "/ios/Pods"
         - "/node_modules"
-        - "/build"
+        - "/tmp"
         - "/.devcontainer/.vscode"
         - "/.vscode"
         - "/.idea"
-
-  modules:
-    alpha: "docker://${COMPOSE_PROJECT_NAME}_app${APP_HOME}/node_modules"
-    beta: "./node_modules"
-    mode: one-way-replica
 
   ide:
     alpha: "./.devcontainer/.vscode"

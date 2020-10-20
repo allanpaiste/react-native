@@ -5,6 +5,7 @@
 
 _seed_env := $(shell test ! -f .env && cat .env.dist|sed 's/{{UID}}/'$$(pwd|md5|cut -d ' ' -f1)'/g' > .env)
 _seed_mutagen := $(shell test ! -f mutagen.tmpl.yml && cp mutagen.dist.yml mutagen.tmpl.yml)
+_seed_folders := $(shell mkdir -p tmp 2>/dev/null)
 
 define generate_mutagen_config
 	export $$(echo $$(cat .env|grep -v '^#')) && \
@@ -54,7 +55,6 @@ purge: # Remove all related volumes and networks
 	source .env && docker volume ls --filter "name=$${COMPOSE_PROJECT_NAME}" -q|xargs docker volume rm || exit 0
 	source .env && docker network ls --filter "name=$${COMPOSE_PROJECT_NAME}" -q|xargs docker network rm || exit 0
 
-develop: export TARGET = base
 develop: ## Prepare the environment for development
-	docker-compose exec app yarn
+	docker-compose exec app yarn install
 	make sync
