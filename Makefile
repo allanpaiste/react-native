@@ -1,7 +1,7 @@
 # Copyright © Allan Paiste. All rights reserved.
 # See LICENSE.txt for license details.
 .DEFAULT_GOAL := help
-.PHONY: help src sync enter sudo purge bootstrap start develop down
+.PHONY: help src sync enter sudo purge bootstrap start develop down clean
 
 _seed_env := $(shell test ! -f .env && cat .env.dist|sed 's/{{UID}}/'$$(pwd|md5|cut -d ' ' -f1)'/g' > .env)
 _seed_mutagen := $(shell test ! -f mutagen.tmpl.yml && cp mutagen.dist.yml mutagen.tmpl.yml)
@@ -58,3 +58,7 @@ purge: # Remove all related volumes and networks
 develop: ## Prepare the environment for development
 	docker-compose exec app yarn install
 	make sync
+
+clean: ## Clean the workspace from all temporary & generated files
+	find . \( -type f -o -type l \) |git check-ignore --stdin |grep -v '^./.idea/' |sed "s/\\'/\\\\'/g"|sed "s/[[:space:]]/\\\\ /g"|xargs rm
+	find . -type d |tail -r |sed "s/\\'/\\\\'/g"|sed "s/[[:space:]]/\\\\ /g"|xargs rmdir 2>/dev/null || exit 0
