@@ -1,6 +1,8 @@
-# Experiment: React Native
+# Experiment: React Native (Expo)
 
 Simple React Native application for testing dockerized work environment.
+
+Uses full-featured Expo with all it's possibilities.
 
 ## Requirements
 
@@ -13,6 +15,12 @@ Additional software required on the HOST machine.
 - [Homebrew](https://www.brew.sh)
 - [Mutagen](https://www.mutagen.io)
 
+### For Simulators & AdHoc Testing on Device
+
+- Install XCode (Apple App Store)
+- Install XCode CLI Tools: `xcode-select --install`
+- [Android Studio](https://developer.android.com/studio)
+
 ### Required Services
 
 Note that the things listed above are something that should/will be shared by the team and do not require each developer to sign up for the full service.
@@ -21,12 +29,6 @@ Note that the things listed above are something that should/will be shared by th
 * Apple Developer Account
 
 Ask for the access credentials and access tokens from your team and use them in `.env` after project has been bootstrapped.
-
-### For Simulators & AdHoc Testing on Device
-
-- Install XCode (Apple App Store)
-- Install XCode CLI Tools: `xcode-select --install`
-- [Android Studio](https://developer.android.com/studio)
 
 ## Setup
 
