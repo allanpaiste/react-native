@@ -66,7 +66,7 @@ npx expo start --web
 
 Wait the application to be built and open [http://localhost:19006](http://localhost:19006).
 
-### Simultaor
+### Simultaor (iOS)
 
 The following setup is needed once to get the Expo app on the booted up simulator.
 
@@ -83,7 +83,7 @@ xcrun simctl install booted tmp/Expo.app
 * Open the Expo app within the simulator.
 * CMD+V the URL from clipboard to the simulator.
 
-### Device
+### Device (iOS)
 
 * Make sure you have [Expo](https://apps.apple.com/us/app/expo-client/id982107779) installed on your device.
 
@@ -112,10 +112,13 @@ xcrun simctl install booted Experiment.app
 
 ### Building for Device (iOS)
 
+TBD: deal with provisioning, etc.
+
 ```shell
 docker-compose exec app yarn build:ios:simulator
 build_url=$(cat expo.log|grep https|tail -n1|sed 's/.*\(https:\/\/\)/\1/g')
 curl -L ${build_url} -o tmp/artifact.tar.gz
 (cd tmp && tar -xvzf artifact.tar.gz)
-xcrun simctl install booted Experiment.app
+
+# TBD: add CLI way of pushing something to a device
 ```
