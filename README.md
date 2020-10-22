@@ -68,8 +68,14 @@ Wait the application to be built and open [http://localhost:19006](http://localh
 
 ### Simultaor
 
+The following setup is needed once to get the Expo app on the booted up simulator.
+
 ```shell
-npx expo start --tunnel
+dl_url=$(curl -sS https://exp.host/--/api/v2/versions/latest|python -c 'import json,sys;obj=json.load(sys.stdin);print obj["data"]["iosUrl"];')
+mkdir -p tmp/Expo.app 2>/dev/null
+curl -L ${dl_url} -o tmp/artifact.tar.gz
+(cd tmp && tar -C Expo.app -xvzf artifact.tar.gz)
+xcrun simctl install booted tmp/Expo.app
 ```
 
 * Copy the `exp://...` URL to clipboard. 
